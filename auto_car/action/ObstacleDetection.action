@@ -1,0 +1,8 @@
+#goal
+string message
+---
+#result
+string message
+---
+#feedback
+int32 distance_from_goal
