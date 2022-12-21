@@ -6,7 +6,7 @@ roi = img[252: 480, 454: 655]
 
 x = 454
 y = 252
-width = 454 - x
+width = 655 - x
 height = 480 - y
 hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
 roi_hist = cv2.calcHist([hsv_roi], [0], None, [180], [0, 180])
@@ -25,7 +25,7 @@ while True:
     cv2.imshow("mask", mask)
     cv2.imshow("Frame", frame)
 
-    cv2.waitKey(0)
+    key = cv2.waitKey(1)
     if key == 27:
         break
 
