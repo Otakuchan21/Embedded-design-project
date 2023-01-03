@@ -111,7 +111,7 @@ class pathPlanning():
         elif distance<travel_range_ll:
             self.pub_msg.linear.x = 0.1
             self.pub_msg.angular.z = 0.2
-        print(self.pub_msg.angular.z)
+        #print(self.pub_msg.angular.z)
         self.pub.publish(self.pub_msg)
         self.rate.sleep()
 
@@ -121,9 +121,9 @@ class pathPlanning():
                 if self.calc_count == 0: 
                     self.intercept = self.equationOfLine()
                 num = (self.current_x*math.sqrt(3)/3) + self.intercept -self.current_y
-                print("numerator for diatance calculation: ", num)
+                #print("numerator for diatance calculation: ", num)
                 den = math.sqrt(4/3)
-                print("denominator for diatance calculation: ", den)
+                #print("denominator for diatance calculation: ", den)
                 distance = num/den
         elif self.path == 2:
             # will define the second path later first need to fix the deviation calcultion of the lines.
@@ -131,9 +131,9 @@ class pathPlanning():
                 if self.calc_count == 0:
                     self.intercept = self.equationOfLine()
                 num = (self.current_x*math.sqrt(3)/3) - self.intercept +self.current_y
-                print("numerator for diatance calculation: ", num)
+                #print("numerator for diatance calculation: ", num)
                 den = math.sqrt(4/3)
-                print("denominator for diatance calculation: ", den)
+                #print("denominator for diatance calculation: ", den)
                 distance = num/den
             if line == 'deviation2':
                 distance = abs(self.current_x) - abs(self.initial_x)
@@ -153,7 +153,7 @@ class pathPlanning():
             intercept  = self.current_y - math.sqrt(3)*self.current_x/3
         else:
             intercept = self.current_y + math.sqrt(3)*self.current_x/3
-        print("intercept: ", intercept)
+        #print("intercept: ", intercept)
         self.calc_count+=1
         return intercept
 
