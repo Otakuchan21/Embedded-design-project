@@ -48,7 +48,7 @@ class orientationFixer():
         self.velocityValue()
         self.pub.publish(self.velocity)
         r.sleep()
-        print(self.current_angular_z)
+        #print(self.current_angular_z)
 
         return orientationMessageResponse("orientation complete")
 
