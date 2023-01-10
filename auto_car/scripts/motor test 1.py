@@ -12,21 +12,21 @@ def init():
 
 def forward(tf):
     init()
-    gpio.output(17, True)
-    gpio.output(22, False)
-    gpio.output(23, True)
-    gpio.output(24, False)
-    time.sleep(tf)
-    gpio.cleanup()
+    GPIO.output(17, True)
+    GPIO.output(22, False)
+    GPIO.output(23, True)
+    GPIO.output(24, False)
+    GPIO.sleep(tf)
+    GPIO.cleanup()
 
 def reverse(tf):
     init()
-    gpio.output(17, False)
-    gpio.output(22, True)
-    gpio.output(23, False)
-    gpio.output(24, True)
+    GPIO.output(17, False)
+    GPIO.output(22, True)
+    GPIO.output(23, False)
+    GPIO.output(24, True)
     time.sleep(tf)
-    gpio.cleanup()
+    GPIO.cleanup()
 
 print ("forward")
 forward(4)
