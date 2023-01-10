@@ -16,7 +16,7 @@ def forward(tf):
     GPIO.output(22, False)
     GPIO.output(23, True)
     GPIO.output(24, False)
-    GPIO.sleep(tf)
+    time.sleep(tf)
     GPIO.cleanup()
 
 def reverse(tf):
