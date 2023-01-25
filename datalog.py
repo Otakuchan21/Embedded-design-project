@@ -1,18 +1,30 @@
 import os
 import time
-from time import sleep 
 from datetime import datetime
 
+file_path_on_pi = '/home/pi/sensor_data.csv'
+file_on_pi = open(file_path_on_pi, "a")
+
 flash_drive = '/media/pi/My Drive/'
-file_path = flash_drive + 'data_log.csv'
-file = open(file_path, "a")
-i=0
-if os.stat(file_path).st_size == 0:
-        file.write("Time,Sensor1,Sensor2,Sensor3,Sensor4,Sensor5\n")
+file_path_on_flash = flash_drive + 'sensor_data.csv'
+file_on_flash = open(file_path_on_flash, "a")
+
+if os.stat(file_path_on_pi).st_size == 0:
+    file_on_pi.write("Time,Sensor1,Sensor2,Sensor3\n")
+    file_on_flash.write("Time,Sensor1,Sensor2,Sensor3\n")
+
 while True:
-        i=i+1
-        now = datetime.now()
-        file.write(str(now)+","+str(i)+","+str(-i)+","+str(i-10)+","+str(i+5)+","+str(i*i)+"\n")
-        file.flush()
-        time.sleep(5)
-file.close()
+    now = datetime.now()
+    # read sensor data
+    sensor1 = 1
+    sensor2 = 2
+    sensor3 = 3
+    file_on_pi.write(str(now)+","+str(sensor1)+","+str(sensor2)+","+str(sensor3)+"\n")
+    file_on_flash.write(str(now)+","+str(sensor1)+","+str(sensor2)+","+str(sensor3)+"\n")
+    file_on_pi.flush()
+    file_on_flash.flush()
+    time.sleep(1)
+
+file_on_pi.close()
+file_on_flash.close()
+
